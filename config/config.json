@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "root",
+    "password": "bootcamp05",
+    "database": "bushel_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "bhfvpo3or7cf3hk5",
+    "password": "j2jwwgnvo16fa53u",
+    "database": "sqnfiwff2zp0jvh3",
+    "host": "cig4l2op6r0fxymw.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
+}
