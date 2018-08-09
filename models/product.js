@@ -25,6 +25,10 @@ module.exports = function(sequelize, datatypes){
         postedBy: {
             type:datatypes.STRING,
             allowNull: false
+        },
+        image: {
+            type:datatypes.BLOB,
+            allowNull: true
         }
     }); 
 
