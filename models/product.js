@@ -20,11 +20,11 @@ module.exports = function(sequelize, datatypes){
         },
         creatorId: {
             type:datatypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         postedBy: {
             type:datatypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         image: {
             type:datatypes.BLOB,
