@@ -9,8 +9,7 @@ module.exports = {
         // return connection.product.findAll(ids !== undefined ? {where: {productName: productName}} : {})
         // .then(selectedProduct=>selectedProduct.map(s=>s.dataValues))
         // console.log('test')
-        // console.log("connection within searchProducts is: " + connection)
-        
+        // console.log("connection within searchProducts is: " + connection)     
         return connection.product.findAll(data !== undefined ? {where: {productName: {like: '%' + data + '%'}}} : {})
         .then(selectedProduct=>selectedProduct.map(s=>s.dataValues))       
     },
@@ -34,7 +33,8 @@ module.exports = {
     editProduct: function(connection, id, data){
         return connection.product.findOne({where: {id}})
         .then(console.log('id ' + id))
-        .then(product=>product.update({data}))
+        .then(product=>product.update(data))
+        .then(console.log(product))
         .then(product=>product.dataValues)
         .then(console.log('p ' + product))
     },
