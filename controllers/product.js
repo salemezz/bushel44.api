@@ -32,8 +32,8 @@ module.exports = {
     },
     editProduct: function(connection, id, data){
         return connection.product.findOne({where: {id}})
-        .then(selectedProduct=>selectedProduct.update(data))
-        .then(selectedProduct=>selectedProduct.dataValues)
+        .then(product=>product.update(data))
+        .then(product=>product.dataValues)
     },
     removeProduct: function(connection, id){
         return connection.product.destroy({where: {id}})
