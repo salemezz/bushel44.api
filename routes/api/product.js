@@ -105,7 +105,7 @@ module.exports = function(){
     // })
     //Edits an existing user. This is a protected route, so only logged in users can access this route.
     Router.put('/products/:id', function(req, res){
-        pd.editProducts(req.connection, req.params.id, req.body)
+        pd.editProduct(req.connection, req.params.id, req.body)
         then(product=>res.json(product))
         .catch(err=>{
             console.log(err)
