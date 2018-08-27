@@ -5,19 +5,7 @@ const middleware = require('../../libraries/middleware')
 //User level imports
 const pd = require('../../controllers/product')
 const path = require('path');
-const fileUpload = require('express-fileupload');
 //const fd = require('fs')
-
-var storage = multer.diskStorage({
-    destination: path.join(__dirname, '../public/uploads/'),
-    filename: function(req, file, callback) {
-        callback(null, file.originalname);
-    }
-});
-
-var uploading = multer({
-    storage: storage
-});
 
 module.exports = function() {
     //Create a Router instance, so we can mount routes on that and pass it up higher in the imports.
