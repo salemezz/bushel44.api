@@ -33,7 +33,6 @@ app.use(function(req, res, next) {
     // res.header('Content-Type': 'application/json'); 
     next();
 });
-
 //Configure body-parser middleware to parse the http request body as json.
 app.use(bodyParser.json())
 
@@ -49,12 +48,17 @@ passport.deserializeUser(authentication.deserializeUser)
 //Configure custom database middleware to attach connection to all request objects.
 app.use(middleware.databaseHandler(connection))
 
-app.use(fileUpload());
+//app.use(fileUpload());
 app.use(express.static('public'));
 //Mount the routes onto their specific paths.
 app.use('/api', require('./routes/api/')())
 app.use('/auth', require('./routes/auth')())
 
+// app.post('/api/products', multipartMiddleware, function(req, res) {
+//     //let uploadedFile = req.body;
+//     console.log("HERE");
+//     console.log(req);
+// });
 // app.get('/api/products', function(req, res) {
 //     res.json(productController.getProducts(req.connection));
 // })

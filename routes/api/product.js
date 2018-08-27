@@ -5,7 +5,14 @@ const middleware = require('../../libraries/middleware')
 //User level imports
 const pd = require('../../controllers/product')
 const path = require('path');
-//const fd = require('fs')
+const cloudinary = require('cloudinary');
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
+cloudinary.config({ 
+    cloud_name: 'dozenuld4', 
+    api_key: '397267885241469', 
+    api_secret: 'M09wFePJ-7ECZwtKdB1qdCtGGcQ' 
+  });
 
 module.exports = function() {
     //Create a Router instance, so we can mount routes on that and pass it up higher in the imports.
@@ -61,28 +68,39 @@ module.exports = function() {
             })
     })
 
-    Router.post('/products', function(req, res) {
-        let uploadedFile = req.files.file;
-        uploadedFile.mv(path.join(__dirname, `/public/uploads/${uploadedFile.name}`), function(err) {
-            if (err) {
-                console.log(err);
-                return res.status(500).send(err);
-            }
-        });
+    Router.post('/products', multipartMiddleware, function(req, res) {
+        //let uploadedFile = req.body;
+        console.log("HERE");
+        console.log(req.files.image);
+        //console.log(uploadedFile);
+        // uploadedFile.mv(path.join(__dirname, `/public/uploads/${uploadedFile.name}`), function(err) {
+        //     if (err) {
+        //         console.log(err);
+        //         return res.status(500).send(err);
+        //     }
+        // });
 
-        req.body.image = path.join(__dirname, `../../uploads/${uploadedFile.name}`);
+        cloudinary.uploader.upload(JSON.stringify(req.files.image.path), function(error, result) { 
+            console.log("===========ERROR==========");
+            console.log(error) ;
+            console.log("===========RESULT==========");
+            console.log(result) ;
+            //return res.statusCode(500);
+          });
+          return res;
+        //req.body.image = path.join(__dirname, `../../uploads/${uploadedFile.name}`);
 
-        pd.createProduct(req.connection, req.body)
-            .then(newProduct => res.json(newProduct))
-            .catch(err => {
-                console.log(err)
-                res.status(500)
-                res.json({
-                    err: 'Internal Server Error',
-                    message: 'Unable to create a new product.',
-                    stack: err
-                })
-            })
+        // pd.createProduct(req.connection, req.body)
+        //     .then(newProduct => res.json(newProduct))
+        //     .catch(err => {
+        //         console.log(err)
+        //         res.status(500)
+        //         res.json({
+        //             err: 'Internal Server Error',
+        //             message: 'Unable to create a new product.',
+        //             stack: err
+        //         })
+        //     })
     });
     //Router.post('/productImage', function(req, res){
     //console.log('test:' + req.connection);
