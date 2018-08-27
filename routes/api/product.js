@@ -63,7 +63,7 @@ module.exports = function() {
 
     Router.post('/products', function(req, res) {
         let uploadedFile = req.files.file;
-        uploadedFile.mv(path.join(__dirname, `../../public/uploads/${uploadedFile.name}`), function(err) {
+        uploadedFile.mv(path.join(__dirname, `/public/uploads/${uploadedFile.name}`), function(err) {
             if (err) {
                 console.log(err);
                 return res.status(500).send(err);
