@@ -80,7 +80,7 @@ module.exports = function() {
         //     }
         // });
 
-        cloudinary.uploader.upload(JSON.stringify(req.files.image.path), function(error, result) { 
+        cloudinary.uploader.upload(path.join(__dirname, req.files.image.path), function(error, result) { 
             console.log("===========ERROR==========");
             console.log(error) ;
             console.log("===========RESULT==========");
