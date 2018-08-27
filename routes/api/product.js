@@ -80,9 +80,7 @@ module.exports = function() {
         //     }
         // });
         console.log(req.files.image.path);
-        cloudinary.v2.uploader.upload(req.files.image.path, 
-            { width: 2000, height: 1000, crop: "limit" },
-            function(result) { 
+        cloudinary.uploader.upload(req.files.image.path, function(result) { 
             req.body.image = result.url;
 
             pd.createProduct(req.connection, req.body)
