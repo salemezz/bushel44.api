@@ -12,6 +12,7 @@ const productController = require('./controllers/product')
 //User level imports
 const authentication = require('./libraries/authentication')(connection)
 const middleware = require('./libraries/middleware')
+const fileUpload = require('express-fileupload');
 
 //Global variable for port, determined by environmental variables.
 const PORT = process.env.PORT || 8080
@@ -48,9 +49,12 @@ passport.deserializeUser(authentication.deserializeUser)
 //Configure custom database middleware to attach connection to all request objects.
 app.use(middleware.databaseHandler(connection))
 
+app.use(fileUpload());
+app.use(express.static('public'));
 //Mount the routes onto their specific paths.
 app.use('/api', require('./routes/api/')())
 app.use('/auth', require('./routes/auth')())
+
 // app.get('/api/products', function(req, res) {
 //     res.json(productController.getProducts(req.connection));
 // })
