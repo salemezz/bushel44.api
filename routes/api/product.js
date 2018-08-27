@@ -79,28 +79,23 @@ module.exports = function() {
         //         return res.status(500).send(err);
         //     }
         // });
+        console.log(req.files.image.path);
+        cloudinary.uploader.upload(req.files.image.path, function(result) { 
+            req.body.image = result.url;
 
-        cloudinary.uploader.upload(path.join(process.env.PWD, req.files.image.path), function(error, result) { 
-            console.log("===========ERROR==========");
-            console.log(error) ;
-            console.log("===========RESULT==========");
-            console.log(result) ;
-            //return res.statusCode(500);
+            pd.createProduct(req.connection, req.body)
+                .then(newProduct => res.json(newProduct))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500)
+                    res.json({
+                        err: 'Internal Server Error',
+                        message: 'Unable to create a new product.',
+                        stack: err
+                    })
+                })
           });
-          return res;
-        //req.body.image = path.join(__dirname, `../../uploads/${uploadedFile.name}`);
 
-        // pd.createProduct(req.connection, req.body)
-        //     .then(newProduct => res.json(newProduct))
-        //     .catch(err => {
-        //         console.log(err)
-        //         res.status(500)
-        //         res.json({
-        //             err: 'Internal Server Error',
-        //             message: 'Unable to create a new product.',
-        //             stack: err
-        //         })
-        //     })
     });
     //Router.post('/productImage', function(req, res){
     //console.log('test:' + req.connection);
