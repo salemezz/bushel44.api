@@ -50,7 +50,7 @@ module.exports = function() {
     Router.post('/products', multipartMiddleware, function(req, res) {
         //let uploadedFile = req.body;
         console.log("HERE");
-        console.log(req.files.image);
+        // console.log(req.files.image);
         //console.log(uploadedFile);
         // uploadedFile.mv(path.join(__dirname, `/public/uploads/${uploadedFile.name}`), function(err) {
         //     if (err) {
