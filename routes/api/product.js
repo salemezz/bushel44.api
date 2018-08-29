@@ -128,16 +128,16 @@ module.exports = function() {
     // })
     //Edits an existing user. This is a protected route, so only logged in users can access this route.
     Router.put('/products/:id', function(req, res) {
-                // let uploadedFile = req.body;
+                let uploadedFile = req.body;
                 // console.log("HERE");
                 // console.log(req.files.image);
                 // console.log(uploadedFile);
-                // uploadedFile.mv(path.join(__dirname, `/public/uploads/${uploadedFile.name}`), function(err) {
-                //     if (err) {
-                //         console.log(err);
-                //         return res.status(500).send(err);
-                //     }
-                // });
+                uploadedFile.mv(path.join(__dirname, `/public/uploads/${uploadedFile.name}`), function(err) {
+                    if (err) {
+                        console.log(err);
+                        return res.status(500).send(err);
+                    }
+                });
                 console.log(req.files.image.path);
                 cloudinary.uploader.upload(req.files.image.path, function(result) { 
                     req.body.image = result.url;
