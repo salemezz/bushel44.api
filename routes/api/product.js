@@ -128,9 +128,6 @@ module.exports = function() {
     // })
     //Edits an existing user. This is a protected route, so only logged in users can access this route.
     Router.put('/products/:id', function(req, res) {
-        console.log(req.files.image.path);
-        cloudinary.uploader.upload(req.files.image.path, function(result) { 
-            req.body.image = result.url;
 
         pd.editProduct(req.connection, req.params.id, req.body)
         .then(product => res.json(product))
@@ -144,7 +141,7 @@ module.exports = function() {
                 })
             })
         });
-    });
+
     //Deletes a user. This is a protected route, so only logged in users can access this route.
     Router.delete('/products/:id', function(req, res) {
         console.log("test")
