@@ -77,7 +77,9 @@ module.exports = function() {
 
     });
 
-    Router.put('/products/:id', function(req, res) {
+    Router.put('/products/:id', multipartMiddleware, function(req, res) {
+        console.log("HERE");
+        console.log(req.files.image.path);
         cloudinary.uploader.upload(req.files.image.path, function(result) { 
             req.body.image = result.url;
 
