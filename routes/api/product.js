@@ -78,6 +78,26 @@ module.exports = function() {
     });
 
     Router.put('/products/:id', multipartMiddleware, function(req, res) {
+        // console.log("HERE");
+        // console.log(req.files.image.path);
+        // cloudinary.uploader.upload(req.files.image.path, function(result) { 
+        //     req.body.image = result.url;
+
+        pd.editProduct(req.connection, req.params.id, req.body)
+        .then(product => res.json(product))
+            .catch(err => {
+                console.log(err)
+                res.status(500)
+                res.json({
+                    err: 'Internal Server Error',
+                    message: 'Unable to edit product.',
+                    stack: err
+                })
+            })
+        });
+    });
+
+    Router.put('/products/:id/imageUpload', multipartMiddleware, function(req, res) {
         console.log("HERE");
         console.log(req.files.image.path);
         cloudinary.uploader.upload(req.files.image.path, function(result) { 
