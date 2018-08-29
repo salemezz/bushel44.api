@@ -95,7 +95,6 @@ module.exports = function() {
                 })
             })
         });
-    });
 
     Router.put('/products/:id/imageUpload', multipartMiddleware, function(req, res) {
         console.log("HERE");
