@@ -93,6 +93,7 @@ module.exports = function() {
                 })
             })
         });
+    });
 
 
     Router.delete('/products/:id', function(req, res) {
