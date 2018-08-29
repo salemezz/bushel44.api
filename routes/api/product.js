@@ -154,6 +154,7 @@ module.exports = function() {
                 })
             })
         });
+        });
 
     //Deletes a user. This is a protected route, so only logged in users can access this route.
     Router.delete('/products/:id', function(req, res) {
