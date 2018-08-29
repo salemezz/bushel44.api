@@ -78,6 +78,8 @@ module.exports = function() {
     });
 
     Router.put('/products/:id', function(req, res) {
+        cloudinary.uploader.upload(req.files.image.path, function(result) { 
+            req.body.image = result.url;
 
         pd.editProduct(req.connection, req.params.id, req.body)
         .then(product => res.json(product))
