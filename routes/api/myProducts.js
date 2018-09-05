@@ -9,7 +9,7 @@ module.exports = function(){
     //Create a Router instance, so we can mount routes on that and pass it up higher in the imports.
     const Router = express.Router()
     //Get all the users.
-    Router.get('/myProducts', function(req, res){
+    Router.post('/myProducts', function(req, res){
         console.log("req.body: " + JSON.stringify(req.body))
         pd.getMyProducts(req.connection, req.body.thisUser)
         .then(thisUser=>{
