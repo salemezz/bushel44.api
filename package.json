@@ -11,22 +11,22 @@
     "author": "Joshua Pinos",
     "license": "MIT",
     "dependencies": {
-        "axios": "^0.18.0",
-        "cloudinary": "^1.11.0",
-        "connect-multiparty": "^2.1.1",
-        "dotenv": "^6.0.0",
-        "express": "^4.16.3",
+        "axios": "^0.18.1",
+        "cloudinary": "^1.23.0",
+        "connect-multiparty": "^2.2.0",
+        "dotenv": "^6.2.0",
+        "express": "^4.17.1",
         "express-fileupload": "^0.4.0",
-        "express-session": "^1.15.6",
+        "express-session": "^1.17.1",
         "multipart": "^0.1.5",
-        "mysql2": "^1.5.3",
-        "passport": "^0.4.0",
+        "mysql2": "^1.7.0",
+        "passport": "^0.4.1",
         "passport-local": "^1.0.0",
-        "react-axios": "^2.0.0",
-        "sequelize": "^4.37.10"
+        "react-axios": "^2.0.4",
+        "sequelize": "^4.44.4"
     },
     "devDependencies": {
-        "nodemon": "^1.17.5",
-        "sequelize-cli": "^4.0.0"
+        "nodemon": "^1.19.4",
+        "sequelize-cli": "^4.1.1"
     }
 }

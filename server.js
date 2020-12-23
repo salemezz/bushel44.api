@@ -23,7 +23,7 @@ const app = express()
 app.use(session({
     secret: "test",
     resave: false,
-    saveUnitialized: false
+    saveUninitialized: false
 }))
 
 app.use(function(req, res, next) {
