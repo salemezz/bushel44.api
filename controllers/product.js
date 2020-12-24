@@ -10,7 +10,7 @@ module.exports = {
         // .then(selectedProduct=>selectedProduct.map(s=>s.dataValues))
         // console.log('test')
         // console.log("connection within searchProducts is: " + connection)     
-        return connection.product.findAll(data !== undefined ? {where: {productName: {like: '%' + data + '%'}}} : {})
+        return connection.product.findAll(data !== undefined ? {where: {productName: {like: '%' + data}}} : {})
         .then(selectedProduct=>selectedProduct.map(s=>s.dataValues))       
     },
     getMyProducts: function(connection, data){
