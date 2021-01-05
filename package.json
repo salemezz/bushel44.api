@@ -11,7 +11,7 @@
     "author": "Joshua Pinos",
     "license": "MIT",
     "dependencies": {
-        "axios": "^0.18.1",
+        "axios": "^0.21.1",
         "cloudinary": "^1.23.0",
         "connect-multiparty": "^2.2.0",
         "dotenv": "^6.2.0",
